@@ -1,92 +1,22 @@
-<!DOCTYPE html>
-<!-- Coding by CodingLab | www.codinglabweb.com-->
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--<title> Responsive Login and Signup Form </title>-->
-
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    />
-    <!-- Favicon Link -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="static/img/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="static/img/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="static/img/favicon-16x16.png"
-    />
-
-    <!-- Boxicons CSS -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body>
-    <section class="container forms">
-      <div class="form login">
-        <div class="form-content">
-          <header>Login</header>
-          <form action="" method="post" novalidate>
-            <div class="field input-field">
-              <input
-                type="username"
-                name="username"
-                placeholder="Username"
-                class="input"
-              />
-            </div>
-
-            <div class="field input-field">
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                class="password"
-              />
-              <i class="bx bx-hide eye-icon"></i>
-            </div>
-
-            <div class="form-link">
-              <a href="#" class="forgot-pass">Forgot password?</a>
-            </div>
-
-            <div class="field button-field">
-              <button type="submit">
-                Login
-              </button>
-            </div>
-          </form>
-
-          <div class="form-link">
-            <span
-              >Don't have an account?
-              <a href="#" class="link signup-link">Signup</a></span
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <!-- JavaScript -->
-    <script src="{{  url_for('static', filename='js/login.js')  }}"></script>
-  </body>
-</html>
+{% block content %}
+    <h1>Sign In</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
