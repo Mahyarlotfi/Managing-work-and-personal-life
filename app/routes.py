@@ -1,9 +1,30 @@
 """All Routes Are Placed In This File."""
-from flask import render_template ,url_for ,flash ,redirect ,request
-from flask_login import current_user, login_user, logout_user, login_required
+from flask import (
+    render_template,
+    url_for,
+    flash,
+    redirect,
+    request
+    )
+
+from flask_login import (
+    current_user,
+    login_user,
+    logout_user,
+    login_required
+    )
+
 from werkzeug.urls import url_parse
-from app import app, db
-from app.forms import LoginForm, RegistrationForm
+
+from app import (
+    app,
+    db
+    )
+
+from app.forms import (
+    LoginForm,
+    RegistrationForm
+    )
 
 from app.models import User
 
@@ -38,6 +59,7 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """Register Route"""
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RegistrationForm()
@@ -53,5 +75,6 @@ def register():
 
 @app.route('/logout')
 def logout():
+    """Logout Route"""
     logout_user()
     return redirect(url_for('login'))
