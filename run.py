@@ -1,6 +1,7 @@
 """Flask Application entry point."""
-from app import app, db
-from app.models import User
+from pms import app
+from pms.extensions import db
+from pms.models import User
 
 
 @app.shell_context_processor

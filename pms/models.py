@@ -6,7 +6,7 @@ from werkzeug.security import (
 
 from flask_login import UserMixin
 
-from app import (
+from pms.extensions import (
     db,
     login
 )

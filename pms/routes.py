@@ -1,5 +1,6 @@
 """All Routes Are Placed In This File."""
 from flask import (
+    Blueprint,
     render_template,
     url_for,
     flash,
@@ -16,29 +17,28 @@ from flask_login import (
 
 from werkzeug.urls import url_parse
 
-from app import (
-    app,
-    db
-    )
+from pms.extensions import db
 
-from app.forms import (
+from pms.forms import (
     LoginForm,
     RegistrationForm
     )
 
-from app.models import User
+from pms.models import User
 
 
+bp = Blueprint('', __name__)
 
-@app.route("/")
-@app.route("/index")
+
+@bp.route("/")
+@bp.route("/index")
 @login_required
 def index():
     """Index Route"""
     return render_template('index.html')
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
     """Login Route"""
     if current_user.is_authenticated:
@@ -57,7 +57,7 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@bp.route('/register', methods=['GET', 'POST'])
 def register():
     """Register Route"""
     if current_user.is_authenticated:
@@ -73,7 +73,7 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/logout')
+@bp.route('/logout')
 def logout():
     """Logout Route"""
     logout_user()
