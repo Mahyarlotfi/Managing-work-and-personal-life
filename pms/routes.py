@@ -17,14 +17,16 @@ from flask_login import (
 
 from werkzeug.urls import url_parse
 
-from pms.extensions import db
+from .extensions import db
 
-from pms.forms import (
+from .forms import (
     LoginForm,
     RegistrationForm
     )
 
-from pms.models import User
+from .models import (
+    User
+    )
 
 
 bp = Blueprint('', __name__)

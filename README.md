@@ -1,6 +1,6 @@
-# Managing-work-and-personal-life
+# Personal-Management-System
 
-The purpose of creating this program is to create a personal program for complete management of work and investment and financial management and learning programming
+The purpose of creating this program is to create a Personal Management System and learning programming
 
 Hello friends
 This is the first program that I am writing and I am currently developing it. I sincerely thank everyone who helps in the development of this program.

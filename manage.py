@@ -10,7 +10,7 @@ from pms import app
 
 from pms.extensions import db
 
-from pms.models import User
+from pms import models
 
 
 def deploy():

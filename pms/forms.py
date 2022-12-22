@@ -15,7 +15,9 @@ from wtforms.validators import (
     EqualTo
     )
 
-from pms.models import User
+from pms.models import (
+    User
+    )
 
 
 class LoginForm(FlaskForm):
